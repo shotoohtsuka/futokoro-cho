@@ -603,7 +603,7 @@ function budgetCard(){
 let libsP=null;
 function loadLibs(){if(libsP)return libsP;
   const ld=src=>new Promise((res,rej)=>{const s=document.createElement("script");s.src=src;s.onload=res;s.onerror=()=>rej(new Error("load"));document.head.appendChild(s)});
-  libsP=Promise.all([ld("vendor/html2canvas.min.js"),ld("vendor/jspdf.umd.min.js")]).catch(e=>{libsP=null;throw e});
+  libsP=Promise.all([ld("html2canvas.min.js"),ld("jspdf.umd.min.js")]).catch(e=>{libsP=null;throw e});
   return libsP;
 }
 function rpDiff(cur,prev,good){if(prev==null)return"<td></td>";const d=cur-prev;if(!d)return `<td class="n">±0</td>`;return `<td class="n ${(d>0)===good?"inc":"exp"}">${d>0?"+":"-"}${plain(Math.abs(d))}</td>`}
